@@ -1,0 +1,182 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Meta API",
+    "description": "示範範例生成文件"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "apiKeyAuth": {
+      "type": "apiKey",
+      "in": "headers",
+      "name": "authorization",
+      "description": "請加上 API Token"
+    }
+  },
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/api/posts/": {
+      "get": {
+        "tags": [
+          "Posts - 貼文"
+        ],
+        "description": "取得全部貼文 API",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Some description...",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "_id": {
+                        "type": "string",
+                        "example": "625ec5fc1e609859bc1b6d69"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "123"
+                      },
+                      "tags": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": "person"
+                      },
+                      "image": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "content": {
+                        "type": "string",
+                        "example": "qwdqwdwd"
+                      },
+                      "likes": {
+                        "type": "number",
+                        "example": 0
+                      },
+                      "comments": {
+                        "type": "number",
+                        "example": 0
+                      }
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Posts - 貼文"
+        ],
+        "description": "取得全部貼文 API",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "type": "object",
+            "required": true,
+            "description": "資料格式",
+            "schema": {
+              "$ref": "#/definitions/createdPosts"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Some description...",
+            "schema": {
+              "$ref": "#/definitions/createdPosts"
+            }
+          }
+        }
+      }
+    },
+    "/api/posts/{id}": {
+      "get": {
+        "tags": [
+          "Posts - 貼文"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Posts - 貼文"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "createdPosts": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Ray"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  }
+}
