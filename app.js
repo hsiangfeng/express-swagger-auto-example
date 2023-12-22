@@ -13,7 +13,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-require('./connections');
+// require('./connections');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
